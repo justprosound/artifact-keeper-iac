@@ -463,6 +463,10 @@ backend:
     # GC_SCHEDULE: "0 0 * * * *"
     # LIFECYCLE_CHECK_INTERVAL_SECS: "60"
     # GC_TRASH_RETENTION_DAYS: "0"          # (1.11.0) days a soft-deleted artifact stays restorable in the admin trash before GC; 0 = next GC pass (max 3650).
+    #                                       Release immutability: once GC reclaims a deleted *released* version, the server
+    #                                       remembers its digest and refuses different bytes at that coordinate for good;
+    #                                       an admin can only reopen it with a permanent delete from the trash before GC runs.
+    #                                       Raise this (e.g. "7") if admins need time to reopen deleted releases on purpose.
     # BLOB_GC_MIN_AGE_SECS: "86400"         # (1.11.0) minimum age before an unreferenced OCI blob may be reclaimed; clamped to [60, 604800].
     # RPM_VERSION_RETENTION_KEEP: "0"       # (1.11.0) keep the N newest published versions per curated RPM repo (hourly, one replica); 0 keeps all.
 

@@ -647,7 +647,7 @@ These notes apply when `backend.image.tag` (or `appVersion`) moves to backend 1.
 | `GRPC_BIND_IP` | `0.0.0.0` | gRPC listen IP. Keep `0.0.0.0` while the backend Service exposes the grpc port. |
 | `METRICS_BIND_IP` | `0.0.0.0` | Metrics-only listener IP. Also available as `backend.metricsListener.bindIP`. |
 | `RPM_VERSION_RETENTION_KEEP` | `0` | Keeps the N newest published versions of each curated RPM repository. `0` keeps all. |
-| `GC_TRASH_RETENTION_DAYS` | `0` | Days a soft-deleted artifact stays restorable in the admin trash. |
+| `GC_TRASH_RETENTION_DAYS` | `0` | Days a soft-deleted artifact stays restorable in the admin trash. After GC reclaims a deleted release, different bytes are refused at that version for good; an admin reopens a version only by permanently deleting it from the trash first, so raise this if admins need that window. |
 | `BLOB_GC_MIN_AGE_SECS` | `86400` | Minimum age before an unreferenced OCI blob can be reclaimed. Clamped to [60, 604800]. |
 | `LDAP_SYNC_INTERVAL` | `3600` | Directory reconcile period. When LDAP is configured, it runs by default. `0` turns it off. |
 | `LDAP_SYNC_DEACTIVATE` | `false` | Opt-in deactivation of users the directory no longer has. |
